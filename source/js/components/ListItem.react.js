@@ -1,5 +1,6 @@
 var React = require('react');
 var QRCode = require('qrcode.react');
+
 var Description = React.createClass({
   render: function () {
     return (
@@ -19,6 +20,10 @@ var ListItem = React.createClass({
 
   render: function () {
     var item = this.props.item;
+
+
+
+
     return (
       <div className="panel panel-primary">
         <div className="panel-heading">
@@ -27,6 +32,7 @@ var ListItem = React.createClass({
 
         {item.description.length > 0 ? <Description description={item.description} /> : ''}
         <QRCode value={item.name} />
+
 
         <div className="panel-footer">
           <form className="form-inline" onSubmit={this.handleSubmit}>

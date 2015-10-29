@@ -1,14 +1,32 @@
 var React = require('react');
 var List = require('./List.react');
 var AddListItem = require('./AddListItem.react');
+var PortalStore = require('../stores/PortalStore');
+
+function getPortalState() {
+    return  PortalStore.getAll();
+}
+
+
+
 
 var ShoppingList = React.createClass({
   getInitialState: function () {
-    return {
-      list: {}
-    };
+    return getPortalState()
   },
+  componentDidMount: function() {
+        PortalStore.addChangeListener(this._onChange);
+    },
 
+    componentWillUnmount: function() {
+        PortalStore.removeChangeListener(this._onChange);
+    },
+
+    _onChange: function() {
+        this.setState(getPortalState());
+    },
+
+/*
   updateList: function (list) {
     this.setState({
       list: list
@@ -33,19 +51,17 @@ var ShoppingList = React.createClass({
   removeAllListItems: function () {
     this.updateList({});
   },
-
+*/
   render: function () {
-    var items = this.state.list;
+    
 
     return (
       <div className="row">
         <div className="col-sm-6">
-          <List items={items}
-            removeListItem={this.removeListItem}
-            removeAllListItems={this.removeAllListItems} />
+          <List items={getPortalState()}/>
         </div>
         <div className="col-sm-6">
-          <AddListItem handleAddListItem={this.updateListItem} />
+          <AddListItem />
         </div>
       </div>
     );

@@ -1,19 +1,17 @@
 var React = require('react');
 var uuid = require('node-uuid');
+var request = require('superagent');
+var PortalActions = require('../actions/PortalActions');
 
 var AddListItem = React.createClass({
   handleSubmit: function (event) {
     event.preventDefault();
 
-    var item = {
-      id: uuid.v4(),
-      date: new Date(),
-      name: this.refs.name.getDOMNode().value.trim(),
-      description: this.refs.description.getDOMNode().value.trim(),
-      quantity: this.refs.quantity.getDOMNode().value
-    };
+  
+    var description = this.refs.description.getDOMNode().value.trim();
+    var title = this.refs.name.getDOMNode().value.trim();
 
-    this.props.handleAddListItem(item);
+    PortalActions.createFood(title, description);
   },
   render: function () {
     var styleRequired = {
