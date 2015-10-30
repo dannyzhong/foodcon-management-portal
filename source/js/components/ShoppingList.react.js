@@ -3,6 +3,8 @@ var List = require('./List.react');
 var AddListItem = require('./AddListItem.react');
 var PortalStore = require('../stores/PortalStore');
 
+
+
 function getPortalState() {
     return  PortalStore.getAll();
 }
@@ -12,6 +14,8 @@ function getPortalState() {
 
 var ShoppingList = React.createClass({
   getInitialState: function () {
+
+
     return getPortalState()
   },
   componentDidMount: function() {
@@ -53,8 +57,14 @@ var ShoppingList = React.createClass({
   },
 */
   render: function () {
-    
-
+    var showMain = PortalStore.getStatus().showMain
+    console.log(showMain);
+    if (showMain){
+      return (
+        <h3 className="page-header">what the fuck</h3>
+        );
+    } 
+    else{
     return (
       <div className="row">
         <div className="col-sm-6">
@@ -65,7 +75,9 @@ var ShoppingList = React.createClass({
         </div>
       </div>
     );
-  }
+}
+}
+  
 });
 
 module.exports = ShoppingList;

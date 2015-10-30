@@ -9,6 +9,9 @@ var assign = require('object-assign');
 var ActionTypes = PortalConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 var _foods = {};
+var _pageDisplayStatus = {
+    showMain: true
+};
 
 
 function create_food(title,text) {
@@ -35,7 +38,10 @@ function update_food(text) {
 
 
 var PortalStore = assign({}, EventEmitter.prototype, {
-    // Getter 方法暴露给外部获取 Store 数据
+    
+    getStatus: function() {
+        return _pageDisplayStatus;
+    },
     getAll: function() {
         return _foods;
     },
@@ -47,6 +53,7 @@ var PortalStore = assign({}, EventEmitter.prototype, {
     addChangeListener: function(callback) {
         this.on(CHANGE_EVENT, callback);
     }
+
 });
 
 
