@@ -22,5 +22,24 @@ module.exports = {
         }
       });
   },
+
+getVendor: function(id) {
+    request.get(APIEndpoints.getVendor+"/"+id)
+      .set('Accept', 'application/json')
+      .end(function(error, res){
+        if (res) {
+          if (res.error) {
+            var errorMsgs = _getErrors(res);
+            PortalActions.updateVendorDetail(errorMsgs);
+          } else {
+            json = JSON.parse(res.text);
+            
+            PortalActions.updateVendorDetail(json);
+          }
+        }
+      });
+  },
+
+
  
 };

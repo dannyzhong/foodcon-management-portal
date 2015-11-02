@@ -2,18 +2,18 @@
 
 var keyMirror = require('keymirror');
 
-var APIRoot = "http://localhost:5000";
+var APIRoot = "http://localhost:8080";
 
 module.exports = {
 
 APIEndpoints: {
-    test:          APIRoot + "/hello"
-    
+    test:          APIRoot + "/vendor/1",
+    getVendor: 	   APIRoot + "/vendor"
   },
 
 ActionTypes: keyMirror({
-  CREATE_FOOD: null,
-  UPDATE_FOOD: null,
+  UPDATE_PAGE_DISPLAY_STATUS: null,
+  UPDATE_HEADER: null,
   
 })
 

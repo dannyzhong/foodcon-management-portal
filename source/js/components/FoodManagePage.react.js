@@ -1,24 +1,17 @@
 var React = require('react');
 var List = require('./List.react');
-var AddListItem = require('./AddListItem.react');
-var PortalStore = require('../stores/PortalStore');
+//var AddListItem = require('./AddListItem.react');
+//var PortalStore = require('../../stores/PortalStore');
+var FoodManageHeader = require('./FoodManageHeader.react');
 
 
 
-function getPortalState() {
-    return  PortalStore.getAll();
-}
-
-
-
-
-var ShoppingList = React.createClass({
-  getInitialState: function () {
-
-
-    return getPortalState()
+var FoodManagePage = React.createClass({
+  /*getInitialState: function () {
+    return PortalStore.getAll();
   },
   componentDidMount: function() {
+        webAPIUtils.getVendor(1);
         PortalStore.addChangeListener(this._onChange);
     },
 
@@ -27,10 +20,10 @@ var ShoppingList = React.createClass({
     },
 
     _onChange: function() {
-        this.setState(getPortalState());
+        this.setState(PortalStore.getAll());
     },
 
-/*
+
   updateList: function (list) {
     this.setState({
       list: list
@@ -56,28 +49,27 @@ var ShoppingList = React.createClass({
     this.updateList({});
   },
 */
-  render: function () {
-    var showMain = PortalStore.getStatus().showMain
-    console.log(showMain);
-    if (showMain){
-      return (
-        <h3 className="page-header">what the fuck</h3>
-        );
-    } 
-    else{
+  render: function() {
+   
+    
     return (
-      <div className="row">
+
+      
+        return (<FoodManageHeader />);
+
+      /*<div className="row">
         <div className="col-sm-6">
-          <List items={getPortalState()}/>
+          <List items={PortalStore.getFood}/>
         </div>
         <div className="col-sm-6">
           <AddListItem />
         </div>
-      </div>
-    );
-}
-}
+      </div>*/
+      
+    );}
+
+
   
 });
 
-module.exports = ShoppingList;
+module.exports = FoodManagePage;

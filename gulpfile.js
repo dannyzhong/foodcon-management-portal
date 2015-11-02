@@ -9,6 +9,7 @@ var uglify = require('gulp-uglify');
 gulp.task('browserify', function () {
   return browserify('./source/js/app.js')
         .transform(reactify)
+        .require('react')
         .bundle()
         .pipe(source('shopping-list.js'))
         .pipe(buffer())
@@ -21,7 +22,10 @@ gulp.task('minifyHtml', function() {
         .pipe(htmlMinifier({collapseWhitespace: true}))
         .pipe(gulp.dest('./build'))
 });
-
+gulp.task('css', function() {
+  return gulp.src('./source/css/*.css')
+    .pipe(gulp.dest('./build/css'));
+});
 gulp.task('watch', function() {
   gulp.watch('./source/js/**/*.js', ['browserify']);
   gulp.watch('./source/**/*.html', ['minifyHtml']);
@@ -29,4 +33,4 @@ gulp.task('watch', function() {
 
 gulp.task('build', ['browserify', 'minifyHtml']);
 
-gulp.task('default', ['watch', 'browserify', 'minifyHtml']);
+gulp.task('default', ['watch', 'browserify', 'minifyHtml','css']);
