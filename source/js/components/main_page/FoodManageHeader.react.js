@@ -2,26 +2,28 @@
 
 var React = require('react');
 var PortalStore = require('../../stores/PortalStore');
+var HeaderStore = require('../../stores/HeaderStore');
 var webAPIUtils = require('../../utils/WebAPIUtils')
+var Label = require('react-bootstrap').Label
 
 var FoodManageHeader = React.createClass({
-  /*getInitialState: function () {
-    return PortalStore.getFoodManageHeaderState();
+  getInitialState: function () {
+    return HeaderStore.getHeaderState();
   },
   componentDidMount: function() {
-        PortalStore.addChangeListener(this._headerChange);
+        HeaderStore.addHeaderStateChangeListener(this._headerStateChange);
         webAPIUtils.getVendor(1);
     },
 
     componentWillUnmount: function() {
-        PortalStore.removeChangeListener(this._headerChange);
+        HeaderStore.removeHeaderStateChangeListener(this._headerStateChange);
     },
 
-    _headerChange: function() {
-        this.setState(PortalStore.getFoodManageHeaderState());
+    _headerStateChange: function() {
+        this.setState(HeaderStore.getHeaderState());
     },
 
-
+    /*
   updateList: function (list) {
     this.setState({
       list: list
@@ -47,14 +49,16 @@ var FoodManageHeader = React.createClass({
     this.updateList({});
   },
 */
+  
+
   render: function () {
-    
-    
+    var name = HeaderStore.getHeaderState().vendorInfo.name;
+    console.log(HeaderStore.getHeaderState());
     return (
       
       <div className="row">
         <div className="col-md-8">
-          header 1
+          <h3>Welcome <Label bsStyle="success">  {name} </Label></h3>
         </div>
         <div className="col-md-4">
           header 2

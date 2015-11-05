@@ -3,7 +3,7 @@ var React = require('react');
 //var AddListItem = require('./AddListItem.react');
 var PortalStore = require('../../stores/PortalStore');
 var FoodManageHeader = require('./FoodManageHeader.react');
-
+var FoodManageMain = require('./FoodManageMain.react');
 
 
 var FoodManagePage = React.createClass({
@@ -53,16 +53,15 @@ var FoodManagePage = React.createClass({
    
     
     return (
+     <div className="row"> 
+    
       <FoodManageHeader />
+     
+      
+      <FoodManageMain />
+       
+       </div>
 
-      /*<div className="row">
-        <div className="col-sm-6">
-          <List items={PortalStore.getFood}/>
-        </div>
-        <div className="col-sm-6">
-          <AddListItem />
-        </div>
-      </div>*/
       
     );}
 

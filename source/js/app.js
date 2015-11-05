@@ -1,6 +1,6 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
+
 
 var ApplicationClass = require('./components/Application.react');
-var ApplicationComponent = React.createFactory(ApplicationClass);
-
-React.render(ApplicationComponent(), document.querySelector('body'));
+ReactDOM.render( <ApplicationClass/>, document.getElementById('food_manage_portal'));

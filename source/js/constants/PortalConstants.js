@@ -13,8 +13,9 @@ APIEndpoints: {
 
 ActionTypes: keyMirror({
   UPDATE_PAGE_DISPLAY_STATUS: null,
-  UPDATE_HEADER: null,
-  
+  UPDATE_VENDOR_INFO: null,
+  ADD_NEW_INGREDIENT: null,
+  ADD_NEW_FOOD: null,
 })
 
 
