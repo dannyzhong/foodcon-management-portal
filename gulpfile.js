@@ -11,7 +11,7 @@ gulp.task('browserify', function () {
         .transform(reactify)
         .require('react')
         .bundle()
-        .pipe(source('shopping-list.js'))
+        .pipe(source('foodcon-management-portal.js'))
         .pipe(buffer())
         .pipe(uglify())
         .pipe(gulp.dest('./build/js/'));
